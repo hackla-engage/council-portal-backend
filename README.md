@@ -10,6 +10,9 @@ PostgreSQL
 ## ORM
 Sequelize w/ migrations
 
+## ODM
+mongoose
+
 ## agendas
 MongoDB (atlas)
 
