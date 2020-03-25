@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+    postgres:
+        image: postgres:11-alpine
+        env_file: 
+            - env/postgres.env
+    mongo:
+        image: mongo:latest
+        env_file: 
+            - env/mongo.env
+    redis:
+        image: bitnami/redis:latest
+        env_file: 
+            - env/redis.env
+    portal:
+        image: hack4laengage/council_portal_backend
+        build: .
+        # override CMD
+        command: ["sh", "scripts/rundev.sh"]
+        env_file: 
+            - env/postgres.env
+            - env/mongo.env
+            - env/redis.env
+            - env/portal.env
+        depends_on: 
+            - postgres
+            - mongo
+            - redis
